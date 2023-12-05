@@ -1,6 +1,8 @@
 package tn.esprit.backend.Dto;
 
-public record SignUpDto (String firstName,String lastName, String login, char[] password){
+import tn.esprit.backend.entities.Role;
+
+public record SignUpDto (String firstName, String lastName, String login, char[] password, Role role){
 
 
 }

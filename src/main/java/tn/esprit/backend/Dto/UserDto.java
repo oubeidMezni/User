@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import tn.esprit.backend.entities.Role;
 
 @Data
 @AllArgsConstructor
@@ -15,4 +16,5 @@ public class UserDto {
     private String lastName;
     private String login;
     private String token;
+    private Role role;
 }

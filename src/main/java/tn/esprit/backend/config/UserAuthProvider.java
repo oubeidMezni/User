@@ -41,8 +41,9 @@ public class UserAuthProvider {
                 .withIssuer(dto.getLogin())
                 .withIssuedAt(now)
                 .withExpiresAt(validity)
-                .withClaim("firstName",dto.getFirstName())
-                .withClaim("lastName",dto.getLastName())
+                .withClaim("id",dto.getId())
+                .withClaim("role", String.valueOf(dto.getRole()))
+
                 .sign(Algorithm.HMAC256(secretKey));
     }
 

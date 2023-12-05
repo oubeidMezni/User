@@ -9,6 +9,7 @@ import tn.esprit.backend.Dto.CredentialsDto;
 import tn.esprit.backend.Dto.SignUpDto;
 import tn.esprit.backend.Dto.UserDto;
 import tn.esprit.backend.config.UserAuthProvider;
+import tn.esprit.backend.entities.Role;
 import tn.esprit.backend.repositories.UserRespository;
 import tn.esprit.backend.services.UserService;
 
@@ -31,7 +32,7 @@ public class AuthController {
     public ResponseEntity<UserDto> register(@RequestBody SignUpDto signUpDto){
      UserDto  user =   userService.register(signUpDto);
         user.setToken(userAuthProvider.createToken(user));
-
+        user.setRole(Role.UNIVERSITY);
         return ResponseEntity.created(URI.create("/users/"+ user.getId())).body(user);
     }
 }

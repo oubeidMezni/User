@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import tn.esprit.backend.Dto.CredentialsDto;
 import tn.esprit.backend.Dto.SignUpDto;
 import tn.esprit.backend.Dto.UserDto;
+import tn.esprit.backend.entities.Role;
 import tn.esprit.backend.entities.User;
 import tn.esprit.backend.exceptions.AppException;
 import tn.esprit.backend.mappers.UserMapper;
@@ -46,7 +47,7 @@ public class UserService {
 
         User user = userMapper.SignUptoUser(userDto);
         user.setPassword(passwordEncoder.encode(CharBuffer.wrap(userDto.password())));
-
+        user.setRole(Role.UNIVERSITY);
         User savedUser = userRespository.save(user);
 
         return userMapper.toUserDto(savedUser);
